@@ -8,4 +8,6 @@
 //= require jquery-fileupload/jquery.fileupload-audio
 //= require jquery-fileupload/jquery.fileupload-video
 //= require jquery-fileupload/jquery.fileupload-validate
+//= require jquery-fileupload/jquery.fileupload-ui
+
 //= require jquery-fileupload/locale
