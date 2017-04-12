@@ -5,17 +5,17 @@
 
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {
-
+		console.log("uiw - 1");
 		// AMD. Register as an anonymous module.
 		define([ "jquery" ], factory );
 
 	} else if ( typeof exports === "object" ) {
-
+		console.log("uiw - 2");
 		// Node/CommonJS
 		factory( require( "jquery" ) );
 
 	} else {
-
+		console.log("uiw - 3");
 		// Browser globals
 		factory( jQuery );
 	}

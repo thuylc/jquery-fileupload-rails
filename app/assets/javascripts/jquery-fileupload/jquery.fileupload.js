@@ -6,7 +6,7 @@
  * https://blueimp.net
  *
  * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  */
 
 /* jshint nomen:false */
@@ -15,18 +15,21 @@
 ;(function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
+        console.log("1");
         // Register as an anonymous AMD module:
         define([
             'jquery',
-            'jquery.ui.widget'
+            'jquery-ui/ui/widget'
         ], factory);
     } else if (typeof exports === 'object') {
         // Node/CommonJS:
+        console.log("2");
         factory(
             require('jquery'),
             require('./vendor/jquery.ui.widget')
         );
     } else {
+        console.log("3");
         // Browser globals:
         factory(window.jQuery);
     }
@@ -1080,6 +1083,8 @@
         _handleFileTreeEntry: function (entry, path) {
             var that = this,
                 dfd = $.Deferred(),
+                entries = [],
+                dirReader,
                 errorHandler = function (e) {
                     if (e && !e.entry) {
                         e.entry = entry;
@@ -1107,8 +1112,7 @@
                             readEntries();
                         }
                     }, errorHandler);
-                },
-                dirReader, entries = [];
+                };
             path = path || '';
             if (entry.isFile) {
                 if (entry._file) {
@@ -1309,6 +1313,10 @@
             this._off(this.options.dropZone, 'dragenter dragleave dragover drop');
             this._off(this.options.pasteZone, 'paste');
             this._off(this.options.fileInput, 'change');
+        },
+
+        _destroy: function () {
+            this._destroyEventHandlers();
         },
 
         _setOption: function (key, value) {

@@ -6,7 +6,7 @@
  * https://blueimp.net
  *
  * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  */
 
 /* jshint nomen:false */
@@ -16,9 +16,10 @@
     'use strict';
     if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
+        console.log("ui-a");
         define([
             'jquery',
-            'tmpl',
+            'blueimp-tmpl',
             './jquery.fileupload-image',
             './jquery.fileupload-audio',
             './jquery.fileupload-video',
@@ -26,11 +27,16 @@
         ], factory);
     } else if (typeof exports === 'object') {
         // Node/CommonJS:
+        console.log("ui-b");
         factory(
             require('jquery'),
-            require('tmpl')
+            require('blueimp-tmpl'),
+            require('./jquery.fileupload-image'),
+            require('./jquery.fileupload-video'),
+            require('./jquery.fileupload-validate')
         );
     } else {
+        console.log("ui-c");
         // Browser globals:
         factory(
             window.jQuery,
